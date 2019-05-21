@@ -60,15 +60,15 @@ Save/Clear :
 
 react-big-scheduler :
 ---
-https://reactjsexample.com/a-scheduler-and-resource-planning-component-built-for-react/
+>https://reactjsexample.com/a-scheduler-and-resource-planning-component-built-for-react/
 
 react-day-picker :
 ---
-https://react-day-picker.js.org
+>https://react-day-picker.js.org
 
 css :
 ---
-https://html5up.net/dimension
+>https://html5up.net/dimension
 
 ---------------------------------------------------------------------------------
 
