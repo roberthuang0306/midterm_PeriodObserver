@@ -55,16 +55,19 @@ class FirstLogin extends Component {
     			        <form method="post" id="myform" method="post" action='/'>
 					        <div className="fields">
 					    	    <div className="field half">
-					    		    <label htmlFor="period">period</label>
+					    		    <label htmlFor="period">average period (number)</label>
 					    			<input type="text" name="period" id="period" />
 					    	    </div>
 					            <div className="field half">
-            		    	        <label htmlFor="duration">duration</label>
+            		    	        <label htmlFor="duration">average duration (number)</label>
 					    	        <input type="text" name="duration" id="duration"/>
 					            </div>
 					        </div>
                             <div style={{justifyContent:'center', display:"flex",}}>
-                                <Datepicker setDate={this.handleDateChange}/>
+                                <div>
+                                    <div>choose last period date :</div>
+                                    <Datepicker setDate={this.handleDateChange}/>
+                                </div>
                             </div>
 				        </form>
                     </div>

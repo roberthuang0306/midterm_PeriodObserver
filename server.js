@@ -14,21 +14,6 @@ db.on('error', error => {
 })
 db.once('open', () => {
     console.log('MongoDB connected!');
-    /*
-    var newClient = new ClientModel({
-        account:'test',
-        password:'test',
-        period:'27',
-        duration:'6',
-        dataNum:'1',
-        lastStart:'2019-05-16',
-        lastEnd:'2019-05-22'
-    })
-    newClient.save(function (err) {
-        if (err) return console.log(err);
-        // saved!
-    })
-    */
 })
 
 // Body Parser Middleware
