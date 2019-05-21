@@ -84,7 +84,8 @@ export default class Homepage extends Component {
 					title: 'safe',
 					bgColor:'#63d38d'
 				}
-			]
+			],
+			save : false
 		}
 		console.log({lastStart,lastEnd,nextStart,nextEnd})
 	}
@@ -171,8 +172,8 @@ export default class Homepage extends Component {
 					title: 'safe',
 					bgColor:'#63d38d'
 				}
-			]
-			
+			],
+			save : true
 		}))
 	}
 	calculateDays=(day1,day2)=>{
@@ -182,34 +183,44 @@ export default class Homepage extends Component {
 		return((Day2-Day1)/1000/86400)
 	}
 	handleSave=()=>{
-		let lastStart   = this.props.CalendarData.lastStart;
-		let lastEnd     = this.props.CalendarData.lastEnd;
-		let dataNum     = this.props.CalendarData.dataNum;
-		let newDataNum  = this.props.CalendarData.dataNum+1;
-		let period      = this.props.CalendarData.period;
-		let duration    = this.props.CalendarData.duration;
-		let nextStart   = this.state.CalendarData.nextStart;
-		let nextEnd     = this.state.CalendarData.nextEnd;
-		let newDuration = this.calculateDays(nextStart,nextEnd)+1;
-		let newPeriod   = this.calculateDays(lastStart,nextStart);
-		
-		if( newPeriod <= 14 ) alert(`period = ${newPeriod} !?!? go and see a doctor@@`)
-		else {
+		if(!this.state.save) {
+			alert('nothing to save, please make sure you have chosen the date!');
+			return false
+		}
+		else{
+			let lastStart   = this.props.CalendarData.lastStart;
+			let lastEnd     = this.props.CalendarData.lastEnd;
+			let dataNum     = this.props.CalendarData.dataNum;
+			let newDataNum  = this.props.CalendarData.dataNum+1;
+			let period      = this.props.CalendarData.period;
+			let duration    = this.props.CalendarData.duration;
+			let nextStart   = this.state.CalendarData.nextStart;
+			let nextEnd     = this.state.CalendarData.nextEnd;
+			let newDuration = this.calculateDays(nextStart,nextEnd)+1;
+			let newPeriod   = this.calculateDays(lastStart,nextStart);
+			
+			if( newPeriod <= 14 ) {
+				alert(`period = ${newPeriod} !?!? go and see a doctor@@`)
+				return false;
+			}
+			else {
 				fetch('homepage/save', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					account: this.props.CalendarData.account,
-					password: this.props.CalendarData.password,
-					period: (dataNum*period+newPeriod)/(newDataNum),
-					duration: (dataNum*duration+newDuration)/(newDataNum),
-					dataNum: newDataNum,
-					lastStart: nextStart,
-					lastEnd: nextEnd
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						account: this.props.CalendarData.account,
+						password: this.props.CalendarData.password,
+						period: (dataNum*period+newPeriod)/(newDataNum),
+						duration: (dataNum*duration+newDuration)/(newDataNum),
+						dataNum: newDataNum,
+						lastStart: nextStart,
+						lastEnd: nextEnd
+					})
 				})
-			})
+				return true;
+			}
 		}
 	}
 	handleClear=()=>{

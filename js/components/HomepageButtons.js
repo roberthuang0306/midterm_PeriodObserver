@@ -7,8 +7,7 @@ class HomepageButtons extends Component {
         document.getElementById('home').click();
     }
     handleSave = () => {
-        this.props.handleSave();
-        document.getElementById('home').click();
+        if (this.props.handleSave()) document.getElementById('home').click();
     }
     render() {
         return (
