@@ -58,14 +58,17 @@ Save/Clear :
 ## 使用與參考之框架/模組/原始碼 ##
 ---------------------------------------------------------------------------------
 
->react-big-scheduler :
-<br> https://reactjsexample.com/a-scheduler-and-resource-planning-component-built-for-react/
-<br> 
-<br> react-day-picker :
-<br> https://react-day-picker.js.org
-<br> 
-<br> css :
-<br> https://html5up.net/dimension
+react-big-scheduler :
+---
+https://reactjsexample.com/a-scheduler-and-resource-planning-component-built-for-react/
+
+react-day-picker :
+---
+https://react-day-picker.js.org
+
+css :
+---
+https://html5up.net/dimension
 
 ---------------------------------------------------------------------------------
 
