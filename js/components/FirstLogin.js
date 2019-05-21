@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 class FirstLogin extends Component {
     constructor(props){
         super(props);
-        console.log(props.CalendarData)
+        //console.log(props.CalendarData)
         this.state = {
             dateStart:'',
             dateEnd:'',
@@ -19,7 +19,7 @@ class FirstLogin extends Component {
         const dateEnd = this.state.dateEnd;
         const account = this.props.CalendarData.account;
         const password = this.props.CalendarData.password;
-        console.log({period,duration,dateStart,dateEnd,account,password})
+        //console.log({period,duration,dateStart,dateEnd,account,password})
     }
     handleDateChange=(Start,End)=>{
         const period = document.getElementById('period').value
@@ -35,7 +35,7 @@ class FirstLogin extends Component {
             lastEnd: End,
             dataNum: 1
         }
-        console.log(client);
+        //console.log(client);
         fetch('/homepagenew', {
 			method: 'POST',
 			headers: {

@@ -36,7 +36,7 @@ class Readonly extends Component{
         }
     }
     static getDerivedStateFromProps(nextProps, prevState){
-        console.log(nextProps.period)
+        //console.log(nextProps.period)
         const schedulerData = prevState.viewModel;
         schedulerData.setEvents(nextProps.period);
         return null;

@@ -91,7 +91,7 @@ var DnDSource = function DnDSource(resolveDragObjFunc, DecoratedComponent) {
                     if (conflictOccurred != undefined) {
                         conflictOccurred(schedulerData, action, item, type, slotId, slotName, newStart, newEnd);
                     } else {
-                        console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
+                        //console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
                     }
                 } else {
                     if (isEvent) {

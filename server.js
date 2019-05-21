@@ -10,17 +10,17 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
 db.on('error', error => {
-    console.log(error)
+    //console.log(error)
 })
 db.once('open', () => {
-    console.log('MongoDB connected!');
+    //console.log('MongoDB connected!');
 })
 
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.post('/',(req,res)=>{
-    console.log('/ posting')
+    //console.log('/ posting')
     const client = {
         account: req.body.account,
         password: req.body.password,
@@ -41,42 +41,42 @@ app.post('/',(req,res)=>{
     }
 })
 app.post('/homepage/save',(req,res)=>{
-    console.log('/homepage/save posting');
+    //console.log('/homepage/save posting');
     const client = req.body;
     if (!client) {
         res.json({error:'empty!'})
     }
     else {
-        console.log('save')
+        //console.log('save')
         ClientModel.findOneAndUpdate({account:client.account},client,(err,data)=>{
            res.json(data)
         })
     }
 })
 app.post('/homepage/delete',(req,res)=>{
-    console.log('/homepage/delete posting');
+    //console.log('/homepage/delete posting');
     const client = req.body;
     if (!client) {
         res.json({error:'empty!'})
     }
     else {
-        console.log('delete')
+        //console.log('delete')
         ClientModel.findOneAndDelete({account:client.account},(err,data)=>{
             res.json(data)
         })
     }
 })
 app.post('/homepagenew',(req,res)=>{
-    console.log('/homepagenew posting');
+    //console.log('/homepagenew posting');
     const client = req.body;
     if (!client) {
         res.json({error:'empty!'})
     }
     else {
-        console.log('new')
+        //console.log('new')
         var newClient = new ClientModel(client)
         newClient.save(function (err) {
-            if (err) return console.log(err);
+            if (err) return //console.log(err);
             // saved!
         })
     }

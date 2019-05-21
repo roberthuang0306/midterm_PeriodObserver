@@ -211,7 +211,7 @@ var ResourceEvents = (_temp = _class = function (_Component) {
                         title: undefined
                     }, _DnDTypes.DnDTypes.EVENT, slotId, slotName, startTime, endTime);
                 } else {
-                    console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
+                    //console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
                 }
             } else {
                 if (newEvent != undefined) newEvent(schedulerData, slotId, slotName, startTime, endTime);

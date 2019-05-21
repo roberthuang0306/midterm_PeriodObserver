@@ -16,7 +16,7 @@ class Login extends Component {
 		}).then((response)=>{
 			return response.json()
 		}).then((jsonData) => {
-			console.log(jsonData);
+			//console.log(jsonData);
 			if(jsonData.error === 'password wrong!') alert(jsonData.error);
 			else if(jsonData.error === 'no client') {
 				this.props.redirectnew();
@@ -27,7 +27,7 @@ class Login extends Component {
 				this.props.setAccount(jsonData)
 			};
 		}).catch((err) => {
-			console.log('錯誤:', err);
+			//console.log('錯誤:', err);
 		})
 	}
 	inputenter = (e) =>{

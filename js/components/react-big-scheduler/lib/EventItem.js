@@ -390,7 +390,7 @@ var EventItem = (_temp = _class = function (_Component) {
             if (conflictOccurred != undefined) {
                 conflictOccurred(schedulerData, 'StartResize', eventItem, _DnDTypes.DnDTypes.EVENT, slotId, slotName, newStart, eventItem.end);
             } else {
-                console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
+                //console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
             }
             _this3.subscribeResizeEvent(_this3.props);
         } else {
@@ -613,7 +613,7 @@ var EventItem = (_temp = _class = function (_Component) {
             if (conflictOccurred != undefined) {
                 conflictOccurred(schedulerData, 'EndResize', eventItem, _DnDTypes.DnDTypes.EVENT, slotId, slotName, eventItem.start, newEnd);
             } else {
-                console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
+                //console.log('Conflict occurred, set conflictOccurred func in Scheduler to handle it');
             }
             _this3.subscribeResizeEvent(_this3.props);
         } else {

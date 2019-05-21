@@ -28,13 +28,13 @@ export default class Datepicker extends React.Component {
     this.setState(this.getInitialState());
   }
   handleSendDate=()=>{
-      console.log('testIso');
-      console.log(this.state.from.toISOString());
+      //console.log('testIso');
+      //console.log(this.state.from.toISOString());
       this.props.setDate(this.state.from.toISOString(),this.state.to.toISOString());
   }
   render() {
     const { from, to } = this.state;
-    console.log(this.state);
+    //console.log(this.state);
     const modifiers = { start: from, end: to };
     return (
       <div className="RangeExample">

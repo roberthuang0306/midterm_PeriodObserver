@@ -87,10 +87,10 @@ export default class Homepage extends Component {
 			],
 			save : false
 		}
-		console.log({lastStart,lastEnd,nextStart,nextEnd})
+		//console.log({lastStart,lastEnd,nextStart,nextEnd})
 	}
 	handleDateChange=(thisStart,thisEnd)=>{
-		console.log('datechange')
+		//console.log('datechange')
 		let schedulerData = new SchedulerData(moment().format(DATE_FORMAT), ViewTypes, false, false, {
             customCellWidth: 104,
             nonAgendaDayCellHeaderFormat: 'M/D|HH:mm',
@@ -179,7 +179,7 @@ export default class Homepage extends Component {
 	calculateDays=(day1,day2)=>{
 		let Day1 = new Date(day1);
 		let Day2 = new Date(day2);
-		console.log({Day1,Day2})
+		//console.log({Day1,Day2})
 		return((Day2-Day1)/1000/86400)
 	}
 	handleSave=()=>{

@@ -13,8 +13,8 @@ export default class Blog extends Component {
 		}
 	}
 	setAccount = (Account_json) => {
-		console.log('test')
-		console.log(`test${Account_json}`);
+		//console.log('test')
+		//console.log(`test${Account_json}`);
 		this.setState((prevState, props) => ({
 			CalendarData: Account_json,
 		}))
