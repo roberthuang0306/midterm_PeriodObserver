@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment'
-import Scheduler, {SchedulerData, ViewTypes, CellUnits, DATE_FORMAT} from 'react-big-scheduler/lib/index'
+import Scheduler, {SchedulerData, ViewTypes, CellUnits, DATE_FORMAT} from '../components/react-big-scheduler/lib/index'
 import DemoData from './DemoData'
 import withDragDropContext from './withDnDContext'
 

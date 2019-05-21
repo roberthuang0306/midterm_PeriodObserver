@@ -88,34 +88,45 @@ export default class Homepage extends Component {
 		}
 		console.log({lastStart,lastEnd,nextStart,nextEnd})
 	}
-	handleDateChange=(nextStart,nextEnd)=>{
+	handleDateChange=(thisStart,thisEnd)=>{
 		console.log('datechange')
 		let schedulerData = new SchedulerData(moment().format(DATE_FORMAT), ViewTypes, false, false, {
             customCellWidth: 104,
             nonAgendaDayCellHeaderFormat: 'M/D|HH:mm',
         },)
-        let lastStart = this.state.CalendarData.lastStart;
-		let lastEnd   = this.state.CalendarData.lastEnd;
-		let ovulatory   = schedulerData.localeMoment(nextStart).add(-14, 'days').format(DATE_FORMAT);
-		let unsafeStart = schedulerData.localeMoment(ovulatory).add(-5, 'days').format(DATE_FORMAT);
-		let unsafeEnd   = schedulerData.localeMoment(ovulatory).add(4, 'days').format(DATE_FORMAT);
-		let safe1Start  = schedulerData.localeMoment(lastEnd).add(1, 'days').format(DATE_FORMAT);
-		let safe1End    = schedulerData.localeMoment(unsafeStart).add(-1, 'days').format(DATE_FORMAT);
-		let safe2Start  = schedulerData.localeMoment(unsafeEnd).add(1, 'days').format(DATE_FORMAT);
-		let safe2End    = schedulerData.localeMoment(nextStart).add(-1, 'days').format(DATE_FORMAT);
+        let lastStart    = this.state.CalendarData.lastStart;
+		let lastEnd      = this.state.CalendarData.lastEnd;
+		let thisPeriod   = this.calculateDays(lastStart,thisStart);
+		let thisDuration = this.calculateDays(thisStart,thisEnd);
+		let dataNum      = this.state.CalendarData.dataNum;
+		let period       = this.state.CalendarData.period;
+		let duration     = this.state.CalendarData.duration;
+		let newPeriod    = ((period*dataNum)+thisPeriod)/(dataNum+1);
+		let newDuration  = ((duration*dataNum)+thisDuration)/(dataNum+1);
+		    lastStart    = thisStart;
+		    lastEnd      = thisEnd;
+		let nextStart    = schedulerData.localeMoment(lastStart)  .add(newPeriod, 'days').format(DATE_FORMAT);
+		let nextEnd      = schedulerData.localeMoment(nextStart)  .add(newDuration, 'days').format(DATE_FORMAT);
+		let ovulatory    = schedulerData.localeMoment(nextStart)  .add(-14, 'days').format(DATE_FORMAT);
+		let unsafeStart  = schedulerData.localeMoment(ovulatory)  .add(-5, 'days').format(DATE_FORMAT);
+		let unsafeEnd    = schedulerData.localeMoment(ovulatory)  .add(4, 'days').format(DATE_FORMAT);
+		let safe1Start   = schedulerData.localeMoment(lastEnd)    .add(1, 'days').format(DATE_FORMAT);
+		let safe1End     = schedulerData.localeMoment(unsafeStart).add(-1, 'days').format(DATE_FORMAT);
+		let safe2Start   = schedulerData.localeMoment(unsafeEnd)  .add(1, 'days').format(DATE_FORMAT);
+		let safe2End     = schedulerData.localeMoment(nextStart)  .add(-1, 'days').format(DATE_FORMAT);
 		this.setState((prevState, props) => ({
 			CalendarData :{ period 	  : prevState.CalendarData.period,
 							duration  : prevState.CalendarData.duration,
 							lastStart : prevState.CalendarData.lastStart,
 							lastEnd   : prevState.CalendarData.lastEnd,
-							nextStart : nextStart,
-							nextEnd   : nextEnd, 
+							nextStart : thisStart,
+							nextEnd   : thisEnd, 
 							dataNum   : prevState.CalendarData.dataNum},
 			period : [
 				{
 					id: 1,
-					start: lastStart+' 12:00:00',
-					end: lastEnd+' 12:00:00',
+					start: lastStart,
+					end: lastEnd,
 					resourceId: 'r3',
 					title: 'the Period',
 					bgColor: '#edd3d3'
@@ -227,7 +238,7 @@ export default class Homepage extends Component {
 									 		 flexDirection: "row-reverse"}}>
 									<HomepageButtons handleSave={this.handleSave}
 													 handleClear={this.handleClear}/>
-									<h1 style={{margin:'0rem 3rem'}}>{this.props.CalendarData.account}</h1>
+									<h1 style={{margin:'0rem 3rem'}}>{'Hello! '+this.props.CalendarData.account}</h1>
 								</div>
 								<div style={{display:'flex', margin:'15vh 0px 0px 0px', flexDirection: "row-reverse"}}>
 									<div style={{width:"94vw",
